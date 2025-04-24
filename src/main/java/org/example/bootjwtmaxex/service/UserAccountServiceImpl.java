@@ -2,7 +2,7 @@ package org.example.bootjwtmaxex.service;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
-import org.example.bootjwtmaxex.model.dto.UserAccountJoinDTO;
+import org.example.bootjwtmaxex.model.dto.UserAccountRequestDTO;
 import org.example.bootjwtmaxex.model.entity.UserAccount;
 import org.example.bootjwtmaxex.model.repository.UserAccountRepository;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,7 +16,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public void join(UserAccountJoinDTO dto) throws BadRequestException {
+    public void join(UserAccountRequestDTO dto) throws BadRequestException {
         if(dto.username().isEmpty() || dto.password().isEmpty()) {
             throw new BadRequestException("빈 항목이 있습니다.");
         }

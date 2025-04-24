@@ -1,12 +1,7 @@
 package org.example.bootjwtmaxex.controller;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
-import org.example.bootjwtmaxex.model.dto.UserAccountJoinDTO;
+import org.example.bootjwtmaxex.model.dto.UserAccountRequestDTO;
 import org.example.bootjwtmaxex.service.UserAccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +15,14 @@ public class AuthController {
     public AuthController(UserAccountService userAccountService) {
         this.userAccountService = userAccountService;
     }
+    @PostMapping("/login")
+    public ResponseEntity<String> login(UserAccountRequestDTO dto){
+        return ResponseEntity.ok("");
+    }
 
     //join, register
     @PostMapping("/join")
-    public ResponseEntity<Void> join(UserAccountJoinDTO dto) throws BadRequestException {
+    public ResponseEntity<Void> join(UserAccountRequestDTO dto) throws BadRequestException {
         userAccountService.join(dto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
